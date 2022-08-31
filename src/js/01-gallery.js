@@ -21,17 +21,7 @@ function createGalleryCards(galleryItems) {
 	}).join('');
 };
 
-gallery.addEventListener('click', onGalleryItemClick);
-
-function onGalleryItemClick(event) {
-	event.preventDefault();
-}
-
 new SimpleLightbox('.gallery a', {
-	scrollZoom: false,
-	captionSelector: 'img',
-	captionType: 'attr',
 	captionsData: 'alt',
-	captionPosition: 'bottom',
 	captionDelay: 300,
 });
