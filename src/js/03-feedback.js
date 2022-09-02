@@ -9,7 +9,7 @@ const LOCALSTORAGE_FEEDBACK_KEY = "feedback-form-state";
 form.addEventListener('input', throttle(onInput, 500))
 form.addEventListener('submit', onSubmit)
 
-const formInfo = {};
+const formInfo = JSON.parse(localStorage.getItem(LOCALSTORAGE_FEEDBACK_KEY)) || {};
 
 function onInput(event) {
 	formInfo[event.target.name] = event.target.value;
@@ -19,16 +19,11 @@ function onInput(event) {
 	localStorage.setItem(LOCALSTORAGE_FEEDBACK_KEY, formInfoJSON);
 }
 
-savedFormValues();
+savedFormValues(formInfo);
 
-function savedFormValues() {
-	const savedValues = localStorage.getItem(LOCALSTORAGE_FEEDBACK_KEY);
-	const values = JSON.parse(savedValues);
-
-	if (savedValues) {
-		message.value = values.message || "";
-		email.value = values.email || "";
-	}
+function savedFormValues(values) {
+	message.value = values.message || "";
+	email.value = values.email || "";
 }
 
 function onSubmit(event) {

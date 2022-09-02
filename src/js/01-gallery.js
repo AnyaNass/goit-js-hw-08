@@ -25,3 +25,6 @@ new SimpleLightbox('.gallery a', {
 	captionsData: 'alt',
 	captionDelay: 300,
 });
+
+const date = new Date(2030, 0, 16, 14, 25, 0, 0);
+console.log(date);
